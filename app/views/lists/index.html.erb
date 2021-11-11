@@ -1,8 +1,21 @@
-<h1>My lists</h1>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://cdn.radiofrance.fr/s3/cruiser-production/2020/12/5b5a3d8d-9654-4ebb-9a99-5f8e6169c6c6/838_gettyimages-108387402.jpg);">
+  <div class="container">
+    <h1>Create your list of <strong>favorite</strong> movies !</h1>
+    <%= link_to 'Create a movie list', new_list_path, class: "btn btn-danger" %>
+  </div>
+</div>
+<h1 class='text-center my-4'>My movie lists</h1>
 
-<ul>
-<% @lists.each do |list| %>
-<li><%= link_to list.name, list_path(list) %></li>
-<% end %>
-</ul>
+<div class="container">
+  <div class="row">
+    <% @lists.each do |list| %>
+      <div class="col-sm">
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://picsum.photos/200/300)">
+          <%= link_to list.name, list_path(list) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
 <%= link_to 'Create a movie list', new_list_path %>

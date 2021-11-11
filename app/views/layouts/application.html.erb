@@ -10,6 +10,25 @@
   </head>
 
   <body>
+ <div class="navbar navbar-expand-sm navbar-light navbar-lewagon navbar-fixed-top">
+  <%= link_to "#", class: "navbar-brand" do %>
+    <%= image_tag "https://thumbs.dreamstime.com/b/conception-de-vecteur-heure-projection-du-film-popcorn-pop-corn-pour-le-logo-magasin-180616567.jpg", width: 100 %>
+  <% end %>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <%= link_to "Home", lists_path, class: "nav-link" %>
+      </li>
+    </ul>
+  </div>
+</div>
+
     <%= yield %>
   </body>
 </html>

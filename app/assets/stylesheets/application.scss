@@ -11,3 +11,14 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "components/banner";
+@import "components/card_category";
+@import "components/card_trip";
+
+.yellow {
+  color: rgb(255, 230, 0);
+}
+
+.blue {
+  color: rgb(6, 6, 105)
+}

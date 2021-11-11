@@ -1,18 +1,53 @@
-<h1><%= @list.name %></h1>
+<h1 class='text-center my-3'><%= @list.name %></h1>
 
-<ul>
-<% @list.movies.each do |movie| %>
-<% bookmark = Bookmark.find_by(movie_id: movie, list_id: @list) %>
-<li><%= image_tag movie.poster_url, alt:"poster of #{movie.title}", width: 200 %>
-<%= movie.title %>
-<%= movie.overview %>
-<%= movie.rating %>
-<%= link_to 'delete',
-             bookmark_path(bookmark),
-              method: :delete,
-              data: { confirm: "Are you sure you want to delete #{movie.title} from #{@list.name} ?" } %>
-</li>
-<% end %>
-</ul>
+<div class="container">
+  <div class="row">
+    <% @list.movies.each do |movie| %>
+      <% bookmark = Bookmark.find_by(movie_id: movie, list_id: @list) %>
+          <div class="card-trip col-sm mx-1">
+            <%= image_tag movie.poster_url, alt:"poster of #{movie.title}", width: 200 %>
+            <div class="card-trip-infos">
+              <div>
+                <h2><%= movie.title %></h2>
+                <p><%= movie.overview %></p>
+              </div>
+              <h2 class="card-trip-pricing"><%= movie.rating %> <i class="fas fa-star yellow"></i></h2>
+              <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
+                      bookmark_path(bookmark),
+                        method: :delete,
+                        data: { confirm: "Are you sure you want to delete #{movie.title} from #{@list.name} ?" },
+                        class: "blue" %>
+            </div>
+          </div>
+    <% end %>
+  </div>
+</div>
 
-<%= link_to 'Add a movie', new_list_bookmark_path(@list) %>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-info text-align-center ml-10 mt-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Add a movie
+</button>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add a movie</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for([@list, @bookmark]) do |f| %>
+          <%= f.association :movie %>
+          <%= f.label :comment %>
+          <%= f.text_field :comment %>
+          <div class="modal-footer mt-4">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <div class="btn btn-primary">
+              <%= f.submit %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

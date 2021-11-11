@@ -11,7 +11,7 @@ require 'json'
 url = 'http://tmdb.lewagon.com/movie/top_rated'
 image_base_url = 'https://image.tmdb.org/t/p/w200'
 document = JSON.parse(URI.open(url).read)
-document['results'].first(30).each do |movie|
+document['results'].last(50).each do |movie|
   title = movie['title']
   overview = movie['overview']
   rating = movie['vote_average']
