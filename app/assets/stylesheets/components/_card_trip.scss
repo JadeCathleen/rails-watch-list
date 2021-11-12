@@ -2,12 +2,15 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 10px;
 }
 
 .card-trip > img {
-  height: 200px;
+  height: 50%;
   width: 100%;
   object-fit: cover;
+  margin : 0;
+  padding: 0;
 }
 
 .card-trip h2 {
@@ -16,17 +19,25 @@
   margin: 0;
 }
 
-.card-trip p {
+.card-trip .overview {
   font-size: 12px;
+  text-align: justify;
   opacity: .7;
   margin: 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  height: 100px;
+  white-space: nowrap;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
 }
 
 
 .card-trip .card-trip-infos {
   padding: 16px;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  position: relative;
+  flex-direction: column;
+  // justify-content: space-between;
+  // align-items: flex-end;
+  // position: relative;
 }

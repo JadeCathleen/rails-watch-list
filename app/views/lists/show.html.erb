@@ -1,3 +1,4 @@
+<div class="d-flex align-items-center flex-column">
 <h1 class='text-center my-3'><%= @list.name %></h1>
 
 <div class="container">
@@ -9,14 +10,16 @@
             <div class="card-trip-infos">
               <div>
                 <h2><%= movie.title %></h2>
-                <p><%= movie.overview %></p>
+                <div class="overview"><%= movie.overview %></div>
               </div>
-              <h2 class="card-trip-pricing"><%= movie.rating %> <i class="fas fa-star yellow"></i></h2>
-              <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
-                      bookmark_path(bookmark),
-                        method: :delete,
-                        data: { confirm: "Are you sure you want to delete #{movie.title} from #{@list.name} ?" },
-                        class: "blue" %>
+              <div class='movie-details'>
+                <h2 class="card-trip-pricing"><%= movie.rating %> <i class="fas fa-star yellow"></i></h2>
+                <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
+                        bookmark_path(bookmark),
+                          method: :delete,
+                          data: { confirm: "Are you sure you want to delete #{movie.title} from #{@list.name} ?" },
+                          class: "blue" %>
+              </div>
             </div>
           </div>
     <% end %>
@@ -27,6 +30,7 @@
 <button type="button" class="btn btn-info text-align-center ml-10 mt-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Add a movie
 </button>
+</div>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -42,9 +46,7 @@
           <%= f.text_field :comment %>
           <div class="modal-footer mt-4">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <div class="btn btn-primary">
-              <%= f.submit %>
-            </div>
+            <%= f.submit class:"btn btn-primary" %>
           </div>
         <% end %>
       </div>
