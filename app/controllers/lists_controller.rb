@@ -13,7 +13,8 @@ class ListsController < ApplicationController
   end
 
   def create
-    @list = List.create(list_param)
+    @list = List.new(list_param)
+    # Cloudinary::Uploader.upload(@list.photo.key)
     if @list.save
       redirect_to lists_path(@list)
     else
@@ -24,6 +25,6 @@ class ListsController < ApplicationController
   private
 
   def list_param
-    params.require(:list).permit(:name)
+    params.require(:list).permit(:name, :photo)
   end
 end

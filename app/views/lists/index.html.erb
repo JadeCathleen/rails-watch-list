@@ -10,9 +10,15 @@
   <div class="row">
     <% @lists.each do |list| %>
       <div class="col-sm">
+      <% if list.photo.attached? %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path list.photo.key %>)">
+          <%= link_to list.name, list_path(list) %>
+        </div>
+      <% else %>
         <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://picsum.photos/1000/1000)">
           <%= link_to list.name, list_path(list) %>
         </div>
+      <% end %>
       </div>
     <% end %>
   </div>

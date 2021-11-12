@@ -6,13 +6,13 @@
     <% @list.movies.each do |movie| %>
       <% bookmark = Bookmark.find_by(movie_id: movie, list_id: @list) %>
           <div class="card-trip col-sm mx-1">
-            <%= image_tag movie.poster_url, alt:"poster of #{movie.title}", width: 200 %>
+            <%= image_tag movie.poster_url, alt:"poster of #{movie.title}" %>
             <div class="card-trip-infos">
               <div>
                 <h2><%= movie.title %></h2>
                 <div class="overview"><%= movie.overview %></div>
               </div>
-              <div class='movie-details'>
+              <div class='movie-details d-flex justify-content-between'>
                 <h2 class="card-trip-pricing"><%= movie.rating %> <i class="fas fa-star yellow"></i></h2>
                 <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
                         bookmark_path(bookmark),
